@@ -8,11 +8,13 @@ from django.http import HttpResponse
 from django.utils import timezone
 import time
 
+@api_view(["GET"])
 def health_check(request):
-    return HttpResponse("Healthy", status=200)
+    return Response("Healthy", status=200)
 
+@api_view(["GET"])
 def readiness_check(request):
-    return HttpResponse("Ready", status=200)
+    return Response("Ready", status=200)
 
 class IsCreatorOrReadOnly(permissions.BasePermission):
     """
